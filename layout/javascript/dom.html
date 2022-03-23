@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        input.error{
+            border: 2px solid red;
+            background-color: lightcoral;
+            color: black;
+        }
+    </style>
+    <script>
+          function par(nr){
+         let rezultat
+        if(nr % 2=== 0){
+            rezultat = "par";
+    } else {
+        rezultat = "impar";
+    }
+    return rezultat;
+}
+    console.log(par(5));
+        function clickMe(){
+          let input = document.querySelector("#numar");
+          let numar = Number(input.value);
+          let parImpar = par(numar);
+          let div = document.querySelector("#result");
+          div.innerHTML = `Numarul ${numar} este ${parImpar}</b>`;
+        }
+        function max(a,b){
+        if (a > b){
+            return a;
+        }
+        return b;
+    }
+    function clickMee(){
+        let aInput = document.querySelector("#a");
+        let bInput = document.querySelector("#b");
+        let a = Number (aInput.value);
+        let b = Number (bInput.value);
+        if(isNaN(a)){
+            //inseamna cu utilizatorul nu a scris ce trebuia in casuta a;
+            aInput.classList.add('error');
+        }else {
+            aInput.classList.remove('error');
+        }
+        if(isNaN(b)){
+            //inseamna cu utilizatorul nu a scris ce trebuia in casuta a;
+            bInput.classList.add('error');
+        }else {
+            bInput.classList.remove('error');
+        }
+        let m = max (a,b);
+        let div = document.querySelector("#results");
+        div.innerHTML = `Maximul dintre ${a} si ${b} este <b> ${m}</b>`;
+    }
+    function indiceMasaCorporala(greutate,inaltime){
+        let imc = greutate / (inaltime*inaltime);
+        let tip;
+        if (imc<20){
+            tip = "subponderal";
+        }else if (imc < 25) {
+            tip = "normal";
+        }else if (imc < 30){
+            tip = "supreaponderal";
+        }else if (imc < 40){
+            tip = "obez";
+        }else {
+            tip = "bolnav";
+        }
+        return `La greutatea de ${greutate}kg si inaltime de ${inaltime}m esti ${tip}`;
+    }
+    function Calculeaza (){
+        let greutateInput = document.querySelector("#greutate");
+        let inaltimeInput = document.querySelector("#inaltime");
+        let greutate = Number (greutateInput.value);
+        let inaltime = Number (inaltimeInput.value);
+        if(isNaN(greutate) || greutate < 30 || greutate > 250){
+            //inseamna cu utilizatorul nu a scris ce trebuia in casuta a;
+            greutate.classList.add('error');
+        }else {
+            greutateInput.classList.remove('error');
+        }
+        if(isNaN(inaltime) || inaltime < 1.20 || inaltime > 2.2){
+            //inseamna cu utilizatorul nu a scris ce trebuia in casuta a;
+            inaltimeInput.classList.add('error');
+        }else {
+            inaltimeInput.classList.remove('error');
+        }
+        let indice = indiceMasaCorporala(greutate,inaltime);
+        let div = document.querySelector("#resultss");
+        div.innerHTML = `La greutatea de <b>${greutate}kg</b> si inaltimea de <b>${inaltime}m</b> esti <b>${indice}</b>`;
+    }
+
+    </script>
+</head>
+<body>
+    <input type="number" id="numar" step="100"/>
+    <button onclick="clickMe();">Click me !</button>
+    <div id="result">
+        .......
+    </div>
+    <input type="text" id="a" step="100"/>
+    <input type="text" id="b" step="100"/>
+    <button onclick="clickMee();">Click me !</button>
+    <div id="results">
+        .......
+    </div>
+    <input type="text" id="greutate" placeholder="Greutate"/>
+    <input type="text" id="inaltime" placeholder="Inaltime"/>
+    <button onclick="Calculeaza();">Calculeaza !</button>
+    <div id="resultss">
+        .......
+    </div>
+
+</body>
+</html>
