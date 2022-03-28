@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Events</title>
+    <style>
+
+    </style>
+    <script>
+        function preventAllButDigits(input, event){
+            if(event.key >= "0" && event.key <="9"){
+                // inseamna ca a tastat un numare
+            }else{
+                event.preventDefault();
+            }
+            console.log(input, event);
+
+        }
+        function valideazaTelefon(input){
+            let valid = true;
+            for (let ch of input.value){
+                if (ch < "0" || ch > "9" ){
+                valide = false;
+            }
+        }
+        valid = valid && input.value.length === 10;
+        showError(input, valid, "numarul de telefon nu este de 10 cifre");
+    }
+    function valideazaNume(input){
+        let valid = input.value.length >= 3;
+        showError(input, valid, "Numele trebuie sa fie de cel putin 3 caractere");
+    }
+    function valideazaPrenume(input){
+        let valid = input.value.length >= 3;
+        showError(input, valid, "Numele trebuie sa fie de cel putin 10 caractere");
+    }
+    function showError( input, valid, message){
+        let span = input.nextElementSibling;
+        if (valid){
+            input.classList.remove("error");
+            span.innerHtml= "";
+        }else{
+            input.classList.add("error");
+            span.innerHtml= message;
+        }
+    }
+    function valideazaFormular(){
+        event.preventDefault();
+
+        let firstname = document.querySelector("[name = 'firstname']");
+        let lastname = document.querySelector("[name = 'lasttname']");
+        let phone = document.querySelector("[name = 'phone']");
+        valideazaPrenume(firstname);
+        valideazaNume(lastname);
+        valideazaTelefon(phone);
+        let gender = document.querySelector("[name = 'gender']: checked");
+        if(gender === null){
+            //atunci nu e bifat genderul
+            let allGender = document.querySelectorAll("[name = 'gender']");
+            for(let radio of allGender )
+        }
+
+    }
+    </script>
+   
+  </head>
+  <body>
+   <input type="text"
+   oninput="console.log('oninput'+this.value)"
+   onkeydown="console.log('onkeydown'+this.value)"
+   onkeyup="console.log('onkeyup'+this.value)"
+   onkeypress="console.log('onkeypress'+this.value);preventAllButDigits(this, event)"
+   onchange="console.log(' onchange'+this.value)"
+   />
+   <form onsubmit=" valideazaFormular(event);">
+   <label>
+       Nume:
+       <input type="text"
+   name="firstname"
+   placeholder="FirstName"
+   onfocus="showError(this,true)"
+   onchange="valideazaPrenume(this)"
+   /><span class="errorMessage"></span>
+   </label>
+<br />
+   <label>
+    Prenume:
+       <input type="text"
+   name="lastname"
+   placeholder="LastName"
+   onfocus="showError(this,true)"
+   onchange="valideazaNume(this)"
+   /><span class="errorMessage"></span>
+   </label>
+<br />
+   <label>
+       Telefon:
+       <input type="text"
+   name="phone"
+   placeholder="070000000"
+   onfocus="showError(this,true)"
+   onchange="valideazaNrTelefon(this)"
+   /><span class="errorMessage"></span>
+   </label>
+   <br />
+   <label>Male<input type="radio" name="gender" value="male" /></label>
+  
+   <label>Female <input type="radio" name="gender" value="female" /></label>
+   
+   <input type="submit" value="Salveaza">
+</form>
+  </body>
+</html>
