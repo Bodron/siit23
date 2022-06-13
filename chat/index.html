@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <script src="index.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        onChildAdded,
+      } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDPFStS7AdKHl1DiKDVWF0gCRHPa6W88Q0",
+        authDomain: "chat-dbd9c.firebaseapp.com",
+        databaseURL:
+          "https://chat-dbd9c-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "chat-dbd9c",
+        storageBucket: "chat-dbd9c.appspot.com",
+        messagingSenderId: "92215080362",
+        appId: "1:92215080362:web:35c419dad0e2a4fe8fa7d3",
+      };
+
+      // Initialize Firebase
+
+   
+        const app = initializeApp(firebaseConfig);
+
+        const db = getDatabase(app);
+        const messagesRef = ref(db, "messages");
+        onChildAdded(messagesRef, function (snapshot) {
+          const data = snapshot.val();
+          let key = snapshot.key;
+          displayMessage(data);
+        });
+      
+    </script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="signUpForm">
+      <form onsubmit="event.preventDefault();startChat();">
+        <label>
+          Name:<input
+            type="text"
+            placeholder="John Doe"
+            name="name"
+            value="Bogdan"
+          /> </label
+        ><br />
+        <input type="submit" value="Start Chat" />
+      </form>
+    </div>
+    <div id="chatContainer" class="hidden">
+      <div id="chat">
+        <div class="chatBubble self">
+          <div class="userName">John Doe</div>
+          <div class="message">Cursul e foarte tare</div>
+          <div class="time">19:34</div>
+        </div>
+        <div class="chatBubble self">
+          <div class="userName">John Doe</div>
+          <div class="message">Cursul e foarte tare</div>
+          <div class="time">19:34</div>
+        </div>
+        <div class="chatBubble self">
+          <div class="userName">John Doe</div>
+          <div class="message">Cursul e foarte tare</div>
+          <div class="time">19:34</div>
+        </div>
+        <div class="chatBubble self">
+          <div class="userName">John Doe</div>
+          <div class="message">Cursul e foarte tare</div>
+          <div class="time">19:34</div>
+        </div>
+        <div class="chatBubble other">
+          <div class="userName">John Doe</div>
+          <div class="message">Cursul e foarte tare</div>
+          <div class="time">19:34</div>
+        </div>
+      </div>
+      <div id="controls">
+        <form onsubmit="event.preventDefault();addMessage();">
+          <textarea id="chatMessage" name="chatMessage"></textarea>
+          <button>
+            <img src="images/sendIcon.svg" style="width: 40px; height: 40px" />
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
