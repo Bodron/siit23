@@ -1,0 +1,269 @@
+[
+  {
+    "name": " Miere Tei Borcan 1",
+    "image": "img/tei-borcan1.jpg",
+    "price": "30.00",
+    "quantity": "20",
+    "category": "Tei",
+    "id": "0"
+  },
+  {
+    "name": "Fagure Tei",
+    "image": "img/fagure1.jpg",
+    "price": 15.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "1"
+  },
+  {
+    "name": "Bomboane Miere Tei",
+    "image": "img/Bomboane-miere.jpg",
+    "price": 5.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "2"
+  },
+  {
+    "name": "Polen Tei",
+    "image": "img/polen.jpg",
+    "price": 40.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "3"
+  },
+  {
+    "name": "Acadele Miere Tei",
+    "image": "img/acadelemiere.jpg",
+    "price": 5.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "4"
+  },
+  {
+    "name": "Miere Tei Borcan 2",
+    "image": "img/tei-borcan2.jpg",
+    "price": 40.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "5"
+  },
+  {
+    "name": "Miere Tei Sticla",
+    "image": "img/tei-sticla.jpg",
+    "price": 60.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "6"
+  },
+  {
+    "name": "Miere Tei Plicuri",
+    "image": "/img/miere-plictei.jpg",
+    "price": 5.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "7"
+  },
+  {
+    "name": " Miere Tei Borcan 3",
+    "image": "./img/tei-borcan3.jpg",
+    "price": 40.00,
+    "quantity": 20,
+    "category": "Tei",
+    "id": "8"
+  },
+  {
+    "name": " Miere Salcam Borcan 1",
+    "image": "./img/salcam-borcan1.jpg",
+    "price": 35.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "9"
+  },
+  {
+    "name": "Fagure Salcam",
+    "image": "./img/fagure1.jpg",
+    "price": 20.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "10"
+  },
+  {
+    "name": "Bomboane Miere Salcam",
+    "image": "./img/Bomboane-miere.jpg",
+    "price": 5.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "11"
+  },
+  {
+    "name": "Polen Salcam",
+    "image": "./img/polen-salcam.jpg",
+    "price": 60.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "12"
+  },
+  {
+    "name": "Acadele Miere Salcam",
+    "image": "./img/acadelemiere.jpg",
+    "price": 6.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "13"
+  },
+  {
+    "name": "Miere Salcam Borcan 2",
+    "image": "./img/salcam-borcan2.jpg",
+    "price": 45.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "14"
+  },
+  {
+    "name": "Miere Salcam Sticla",
+    "image": "./img/salcam-sticla.jpg",
+    "price": 90.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "15"
+  },
+  {
+    "name": "Miere Salcam Plicuri",
+    "image": "./img/miere-plicsalcam.jpg",
+    "price": 7.00,
+    "quantity": 20,
+    "category": "Salcam",
+    "id": "16"
+  },
+  {
+    "name": " Miere Poliflora Borcan 1",
+    "image": "./img/poliflora-borcan1.jpg",
+    "price": 15.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "17"
+  },
+  {
+    "name": "Fagure Poliflora",
+    "image": "./img/fagure1.jpg",
+    "price": 20.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "18"
+  },
+  {
+    "name": "Bomboane Miere Poliflora",
+    "image": "./img/Bomboane-miere.jpg",
+    "price": 5.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "19"
+  },
+  {
+    "name": "Polen Poliflora",
+    "image": "./img/polen.jpg",
+    "price": 15.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "20"
+  },
+  {
+    "name": "Acadele Miere Poliflora",
+    "image": "./img/acadelemiere.jpg",
+    "price": 4.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "21"
+  },
+  {
+    "name": "Miere Poliflora Borcan 2",
+    "image": "./img/poliflora-borcan2.jpg",
+    "price": 20.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "22"
+  },
+  {
+    "name": "Miere Poliflora Sticla",
+    "image": "./img/poliflora-sticla.jpg",
+    "price": 35.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "23"
+  },
+  {
+    "name": "Miere Poliflora Plicuri",
+    "image": "./img/miere-plicpoliflora.jpg",
+    "price": 4.99,
+    "quantity": 20,
+    "category": "Poliflora",
+    "id": "24"
+  },
+  {
+    "name": "Rame",
+    "image": "./img/rama-stup.jpg",
+    "price": 15.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "25"
+  },
+  {
+    "name": "Centrifuga",
+    "image": "./img/centrifuga.jpg",
+    "price": 1999.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "26"
+  },
+  {
+    "name": "Pinten",
+    "image": "./img/pinten.jpg",
+    "price": 10.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "27"
+  },
+  {
+    "name": "Masca",
+    "image": "./img/masca.jpg",
+    "price": 51.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "28"
+  },
+  {
+    "name": "Dalta",
+    "image": "./img/dalta.jpg",
+    "price": 25.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "29"
+  },
+  {
+    "name": "Costum Apicol",
+    "image": "./img/costum-apicol.jpg",
+    "price": 300.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "30"
+  },
+  {
+    "name": "Afumatoare",
+    "image": "./img/afumator.jpg",
+    "price": 70.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "31"
+  },
+  {
+    "name": "Manusi Apicole",
+    "image": "./img/manusi-apicole.jpg",
+    "price": 80.99,
+    "quantity": 20,
+    "category": "Utilaje",
+    "id": "32"
+  }
+
+  
+  
+]

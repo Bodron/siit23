@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="details.css" />
+    <link rel="stylesheet" href="admin.css" />
+    
+</head>
+
+<body onload="getData();">
+    <nav class="navbar"></nav>
+
+    <h1>Admin</h1>
+    <button  id="del" onclick="event.stopPropagation();showForm();">+ Adauga un Produs</button>
+    <section >
+        <form id="form" onsubmit="adauga(event);return validateForm();" >
+           <div> <label>Nume:</label>
+            <input type="text" placeholder="Nume" name="nume" /></div>
+            <div> <label>Imagine:</label>
+            <input type="text" placeholder="Imagine" name="imagine" /></div>
+            <div><label>Pret:</label>
+            <input type="text" placeholder="Pret" name="pret" /></div>
+            <div><label>Cantitate:</label>
+            <input type="text" placeholder="Cantitate" name="cantitate" /></div>
+            <div><label>Categorie:</label>
+            <input type="text" placeholder="Categorie" name="categorie" /></div>
+            
+            <input type="submit" value="Salveaza" />
+            
+            <input type="button" value="Cancel" onclick="showTable();" />
+        
+        </form>
+    </section>
+    
+    <table id="list">
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Imagine</th>
+                <th>Pret</th>
+                <th>Cantitate</th>
+                <th>Categorie</th>
+                <th style = "width:100px"></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script src="js/admin.js"></script>
+    <footer></footer>
+
+
+
+   
+    <script src="js/nav.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>

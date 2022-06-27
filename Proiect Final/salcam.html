@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="details.css" />
+    <link rel="stylesheet" href="tei.css" />
+    <link rel="stylesheet" href="grid.css" />
+    <script>
+      let state = {
+        list: [],
+        idxEdit: null,
+        databaseUrl:
+          "https://magazinonline-4e4cd-default-rtdb.europe-west1.firebasedatabase.app/",
+      };
+      function draw() {
+        let container = document.querySelector("#main");
+        let str = "";
+
+        // for (let [i, elem] of state.list) {
+         for (let i = 0; i < state.list.length; i++) {
+            let elem = state.list[i];
+          if (elem === null) {
+            continue;
+          }
+          str += `
+         
+        <div class="pro">
+            <img src="${elem.image}" alt="">
+            <div class="des">
+                <h5>${elem.name}</h5>
+                <h4>${elem.price} RON</h4>
+            </div>
+            <a href="details.html?id=${elem.id}"><button class="btnel">Detalii</button></a>
+        </div>
+    `;
+        }
+        container.innerHTML = str;
+      }
+
+      async function getData() {
+        let url = state.databaseUrl + ".json";
+        let response = await fetch(url);
+        let list = await response.json();
+        for (let [i, elem] of Object.entries(list)){
+          if(elem.category === "Salcam"){
+            state.list.push(elem);
+          }
+        }
+        console.log(state.list)
+        // state.list = Object.entries(list).filter((item) =>
+        //    item.category === "Tei"
+        // );
+        // console.log(Object.entries(list));
+        draw();
+      }
+    </script>
+  </head>
+  <body onload="getData()">
+    <nav class="navbar"></nav>
+
+    <section id="main">
+     
+     
+    </section>
+
+    <footer></footer>
+    <script src="js/nav.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/details.js"></script>
+  </body>
+</html>

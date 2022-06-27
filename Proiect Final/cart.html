@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="details.css" />
+    <link rel="stylesheet" href="tei.css" />
+    <link rel="stylesheet" href="grid.css" />
+    <script>
+      let produs = {};
+      let url =
+        "https://magazinonline-4e4cd-default-rtdb.europe-west1.firebasedatabase.app/";
+      let index = window.location.search.substring(4);
+
+      if (index.length < 1) {
+        window.location = "index.html";
+      }
+      async function getLista() {
+        const response = await fetch(url + index + ".json");
+        produs = await response.json();
+        draw();
+      }
+      function draw(){
+        
+      }
+
+    </script>
+  </head>
+  <body>
+    <nav class="navbar"></nav>
+
+    <section id="main"></section>
+
+    <footer></footer>
+    <script src="js/nav.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/details.js"></script>
+  </body>
+</html>

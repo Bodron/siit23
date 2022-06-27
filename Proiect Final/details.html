@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="details.css" />
+    <script>
+      let produs = {}
+      let url = "https://magazinonline-4e4cd-default-rtdb.europe-west1.firebasedatabase.app/";
+		let index = window.location.search.substring(4);
+    
+		if(index.length<1){
+			window.location = "index.html";
+		}
+		async function getLista() {
+		  const response = await fetch(url+index+".json");
+		  produs = await response.json();
+		  draw();
+		}
+
+    function draw(){
+			document.querySelector("#product-brand").innerText=produs.name;
+			
+			let poza;
+			if (produs.image===undefined) {
+				poza="https://gfsstore.com/wp-content/themes/gfsstore.com/images/no_image_available.png";
+			} else {
+				poza=produs.image;
+			}
+			document.querySelector("#poze").src=poza;
+			
+			
+			document.querySelector("#product-price").innerText=produs.price;
+			
+			
+		}
+
+    function addCart(){
+      let cart = localStorage.getItem("cart");
+      if(cart === null){
+        cart = [];
+      }else {
+        cart = JSON.parse(cart)
+      }
+      let val = document.querrySelector("[#quantity]").value;
+      let found = false;
+      for (let c of cart){
+        if (c.id === index){
+          c.quantity += val;
+          found = true;
+        }
+      }
+      if (!found) {
+        cart.push({
+          ...produs,quantity,id: index
+        })
+      }
+      localStorage.setItem("cart",JSON.stringify(cart))
+    }
+
+
+
+
+
+    </script>
+  </head>
+  <body onload="getLista()">
+    <nav class="navbar"></nav>
+
+    <section class="product-details">
+      
+        <img id="poze" src="" alt="">
+     
+      <div class="details">
+        <h2 id="product-brand"></h2>
+        
+        <span id="product-price"></span>
+        <span class="product-actual-price">20RON</span>
+        <span class="product-discount">( 25% off )</span>
+
+        <form>
+          <label for="quantity">Cantitate:</label>
+          <input type="number" id="quantity"  min="1" max="20" />
+          <input type="submit" />
+        </form>
+        <button class="btn cart-btn" onclick="addCart()">add to cart</button>
+      </div>
+    </section>
+    <section class="detail-des">
+      <h2 class="heading">description</h2>
+      <p class="des"></p>
+    </section>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos autem
+    doloribus deserunt sed, incidunt esse cupiditate maiores vero eveniet
+    architecto repellat ratione dicta magnam qui iste? Cum eius error laborum!
+    <!--cards-container-->
+    <section class="product">
+      <h2 class="product-category">Tei</h2>
+      <button class="pre-btn"><img src="img/left-arrow.svg" alt="" /></button>
+      <button class="nxt-btn"><img src="img/left-arrow.svg" alt="" /></button>
+      <div class="product-container">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card1.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card2.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card3.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card4.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card1.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card5.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card6.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card7.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--cards-container-->
+    <section class="product">
+      <h2 class="product-category">Best selling</h2>
+      <button class="pre-btn"><img src="img/left-arrow.svg" alt="" /></button>
+      <button class="nxt-btn"><img src="img/left-arrow.svg" alt="" /></button>
+      <div class="product-container">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card1.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card2.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card3.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card4.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card1.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card5.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card6.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="discount-tag">25% off</span>
+            <img src="img/card7.jpg" class="product-thumb" alt="" />
+            <button class="card-btn">add to cart</button>
+          </div>
+          <div class="product-info">
+            <h2 class="produc-brand">Miere Poliflora</h2>
+            <p class="product-short-des">se culege de la flori</p>
+            <span class="price">15RON</span
+            ><span class="actual-price">12RON</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer></footer>
+    <script src="js/nav.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/details.js"></script>
+  </body>
+</html>
