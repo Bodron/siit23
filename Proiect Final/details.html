@@ -47,17 +47,19 @@
       }else {
         cart = JSON.parse(cart)
       }
-      let val = document.querrySelector("[#quantity]").value;
+      let quantity = document.querySelector("#quantity").value*1;
       let found = false;
       for (let c of cart){
         if (c.id === index){
-          c.quantity += val;
+          c.quantity += quantity;
           found = true;
         }
       }
       if (!found) {
         cart.push({
-          ...produs,quantity,id: index
+          ...produs,
+          quantity:quantity,
+          id: index
         })
       }
       localStorage.setItem("cart",JSON.stringify(cart))
@@ -80,24 +82,19 @@
         <h2 id="product-brand"></h2>
         
         <span id="product-price"></span>
-        <span class="product-actual-price">20RON</span>
-        <span class="product-discount">( 25% off )</span>
+        <span class="product-actual-price">RON</span>
+       
 
-        <form>
-          <label for="quantity">Cantitate:</label>
+        <div class="cantitate">
+          <label for="quantity">Cantitate:
           <input type="number" id="quantity"  min="1" max="20" />
-          <input type="submit" />
-        </form>
+        </div>
+        
         <button class="btn cart-btn" onclick="addCart()">add to cart</button>
+      </label>
       </div>
     </section>
-    <section class="detail-des">
-      <h2 class="heading">description</h2>
-      <p class="des"></p>
-    </section>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos autem
-    doloribus deserunt sed, incidunt esse cupiditate maiores vero eveniet
-    architecto repellat ratione dicta magnam qui iste? Cum eius error laborum!
+    
     <!--cards-container-->
     <section class="product">
       <h2 class="product-category">Tei</h2>
@@ -331,5 +328,6 @@
     <script src="js/footer.js"></script>
     <script src="js/home.js"></script>
     <script src="js/details.js"></script>
+    
   </body>
 </html>

@@ -11,30 +11,206 @@
     <link rel="stylesheet" href="details.css" />
     <link rel="stylesheet" href="tei.css" />
     <link rel="stylesheet" href="grid.css" />
+    <style>
+      th {
+  background-color: rgb(187, 230, 243);
+  padding: 0.75rem 2rem;
+  text-transform: uppercase;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#list {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 20px 20px 20px 5px;
+  background-color: white;
+  text-align: left;
+  letter-spacing: 0.1rem;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+td {
+  padding: 1rem 2rem;
+}
+#del {
+  
+  padding: 10px;
+  border-radius: 5px;
+  background: none;
+  border: 1px solid #383838;
+  color: #383838;
+  font-size: 20px;
+  cursor: pointer;
+  
+  text-transform: capitalize;
+}
+.total {
+  display: flex;
+  margin: 1px solid black;
+  width: 50%;   
+   margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 1px solid black;
+    width: 50%;
+    color: rgb(0, 0, 0);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: rgb(241, 239, 239);
+    padding: 20px;
+    
+}
+.total #order{
+  width: 48%;
+  padding: 20px;
+  border-radius: 5px;
+  background: none;
+  border: 1px solid #383838;
+  color: #383838;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 20px 0;
+  text-transform: capitalize;
+}
+h1{
+  
+    display: flex;
+    
+    align-self: center;
+}
+p {
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 20px;
+}
+#increase{
+  margin: 10px;
+    padding: 5px;
+    background: aliceblue;
+    border: none;
+    cursor: pointer;
+}
+#decrease{
+  margin: 10px;
+    padding: 5px;
+    background: aliceblue;
+    border: none;
+    cursor: pointer;
+}
+
+
+    </style>
     <script>
       let produs = {};
       let url =
         "https://magazinonline-4e4cd-default-rtdb.europe-west1.firebasedatabase.app/";
       let index = window.location.search.substring(4);
 
-      if (index.length < 1) {
-        window.location = "index.html";
-      }
+      // if (index.length < 1) {
+      //   window.location = "index.html";
+      // }
       async function getLista() {
         const response = await fetch(url + index + ".json");
         produs = await response.json();
         draw();
       }
       function draw(){
+        let cartTable = document.querySelector("#list > table > tbody")
+        let cart = localStorage.getItem("cart")
+        if(cart === null) {
+          cart = [];
+        }else {
+          cart = JSON.parse(cart)
+        }
+        let str = "";
+        let totalPrice = 0;
+        for (let c of cart) {
+          str+=`
+          <tr>
+              <td>${c.name}</td>
+              <td><img src=${c.image} alt="" width="200" height="200"></td>
+              <td>${c.price}</td>
+              <td>
+                <button id="increase" onclick="increaseQuantity(${c.quantity})">+</button>${c.quantity}<button id="decrease" onclick="decreaseQuantity(${c.quantity})">-</button>
+                </td>
+              <td>${c.price * c.quantity}</td>
+              <td ><button  id=del
+                onclick="del(index)">Delete</button></td>
+              `
+              totalPrice = totalPrice + (c.price * c.quantity);
+              
+        }
+        cartTable.innerHTML = str
+        const totalPriceContainer = document.querySelector(".total-price");
         
+        
+        totalPriceContainer.innerHTML = totalPrice;
       }
+
+      function del(index) {
+       
+       
+        let cart = localStorage.getItem("cart");
+        cart = JSON.parse(cart);
+        cart.splice(index , 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        draw();
+
+      }
+      function increaseQuantity(quantity){
+        quantity ++;
+
+      }
+      function decreaseQuantity(quantity){
+        quantity --;
+
+      }
+
+      // function getTotalPrice() {
+      //   let total = 0;
+      //   const totalPriceContainer = document.querySelector('.total-price');
+      //   const cart = JSON.parse(localStorage.getItem("cart"));
+      //   for (let item of cart) {
+      //     total = total + (item.price * item.quantity);
+      //   }
+      //   totalPriceContainer.innerHTML = total.toFixed(2) + 'Ron';
+       
+      // }
+      // console.log(cart);
 
     </script>
   </head>
-  <body>
+  <body onload="draw()" id="cart">
     <nav class="navbar"></nav>
 
-    <section id="main"></section>
+    <main>
+      <div id="list">
+        <table style="width:100%;">
+          <thead>
+         
+              <th style="width: 20%;">Nume</th>
+              <th style="width: 20%;">Imagine</th>
+              <th style="width: 20%;">Pret/Buc</th>
+              <th style="width: 20%;">Cantitate</th>
+              <th style="width: 20%;">Pret Total</th>
+              <th style="width: 20%;"></th>
+             
+              
+              
+            
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="total">
+        <h1> Sumar Comanda</h1>
+        <div>
+          <p>Total</p>
+          <p class="total-price">0</p>
+        </div>
+        <button id="order" onclick="order()">Finalizeaza comanda</button>
+      </div>
+    
 
     <footer></footer>
     <script src="js/nav.js"></script>
@@ -43,3 +219,4 @@
     <script src="js/details.js"></script>
   </body>
 </html>
+<button onclick="increaseQuantity()">-</button>
