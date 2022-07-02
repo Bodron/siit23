@@ -27,6 +27,7 @@ function validateForm() {
     str += `
         <tr>
                 <td>${elem.name}</td>
+                <td>${elem.id}</td>
                 <td><img src=${elem.image} alt="" width="200" height="200"></td>
                 <td>${elem.price}</td>
                 <td>${elem.quantity}</td>
@@ -45,6 +46,7 @@ function edit(idx) {
   showForm();
   let elem = state.list[idx];
   document.querySelector("[name='nume']").value = elem.name;
+  document.querySelector("[name='id']").value = elem.id;
   document.querySelector("[name='imagine']").value = elem.image;
   document.querySelector("[name='pret']").value = elem.pret;
   document.querySelector("[name='cantitate']").value = elem.quantity;
@@ -67,6 +69,7 @@ async function del(idx) {
 async function adauga(event) {
   event.preventDefault();
   let name = document.querySelector("[name='nume']").value.trim();
+  let id = document.querySelector("[name='id']").value.trim();
   let image = document.querySelector("[name='imagine']").value.trim();
   let price = document.querySelector("[name='pret']").value.trim();
   let quantity = document.querySelector("[name='cantitate']").value.trim();
@@ -77,6 +80,7 @@ async function adauga(event) {
       method: "POST",
       body: JSON.stringify({
         name: name,
+        id: id,
         image: image,
         price: price,
         quantity: quantity,
@@ -90,6 +94,7 @@ async function adauga(event) {
         method: "PUT",
         body: JSON.stringify({
           name: name,
+          id: id,
           image: image,
           price: price,
           quantity: quantity,
